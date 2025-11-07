@@ -13,6 +13,17 @@
         "firebase-tools@latest",
         "experimental:mcp"
       ]
+    },
+    "deepwiki": {
+      "url": "https://mcp.deepwiki.com/sse"
+    },
+    "websearch": {
+      "url": "https://victor-websearch.hf.space/gradio_api/mcp/sse"
+    },
+    "exa": {
+      "type": "http",
+      "url": "https://mcp.exa.ai/mcp",
+      "headers": {}
     }
   }
 }
