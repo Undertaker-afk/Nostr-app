@@ -101,9 +101,13 @@ class KeyManagementService {
   // Save key pair
   Future<void> saveKeyPair(KeyPair keyPair) async {
     final keys = await getAllKeys();
-    keys.add(keyPair);
-    final keysJson = jsonEncode(keys.map((k) => k.toJson()).toList());
-    await _storage.write(_keysStorageKey, keysJson);
+    final exists = keys.any((k) => k.npub == keyPair.npub);
+    if (!exists) {
+      keys.add(keyPair);
+      final keysJson = jsonEncode(keys.map((k) => k.toJson()).toList());
+      await _storage.write(_keysStorageKey, keysJson);
+    }
+    // Optionally, you could throw or log if duplicate, depending on requirements.
   }
 
   // Get all keys
